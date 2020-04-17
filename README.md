@@ -1,4 +1,5 @@
 # DnD Voice Dice Roller
+![CI](https://github.com/anttiviljami/dnd-voice-dice-roll/workflows/CI/badge.svg)
 
 A Voice-Controlled App to roll role-playing dice.
 
