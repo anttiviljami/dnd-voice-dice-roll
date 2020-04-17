@@ -1,7 +1,6 @@
 # DnD Voice Dice Roller
-[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/anttiviljami/openapicmd/blob/master/LICENSE)
 ![CI](https://github.com/anttiviljami/dnd-voice-dice-roll/workflows/CI/badge.svg)
-[![Buy me a coffee](https://img.shields.io/badge/donate-buy%20me%20a%20coffee-orange)](https://buymeacoff.ee/anttiviljami)
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/anttiviljami/openapicmd/blob/master/LICENSE)
 
 A Voice-Controlled App to roll role-playing dice. Because why not.
 
