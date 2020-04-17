@@ -1,5 +1,5 @@
 <script>
-  import RPGDiceRoller from "rpg-dice-roller";
+  import RPG from "rpg-dice-roller";
   import { client } from "../lib/speechly";
 
   let textContent = "";
@@ -37,8 +37,8 @@
           .join(" ")}"`
       );
 
-      // throw dice
-      let rolls = [];
+      // roll dice
+      const roller = new RPG.DiceRoller();
       let quantity = 1;
       for (const { type, value } of segment.entities) {
         switch (type) {
@@ -47,16 +47,21 @@
             break;
           case "dice":
             if (!isNaN(value)) {
-              rolls.push(`${Number(quantity)}d${Number(value)}`);
+              roller.roll(`${Number(quantity)}d${Number(value)}`);
               quantity = 1; // reset
             }
             break;
         }
       }
-      if (rolls.length > 0) {
-        const roll = new RPGDiceRoller.DiceRoll(...rolls);
-        appendMessage("You rolled:");
-        appendMessage(roll);
+      if (roller.total) {
+        appendMessage(
+          roller
+            .toString()
+            .split(";")
+            .map(r => r.trim())
+            .join("\n")
+        );
+        appendMessage(`Total: ${roller.total}`);
       } else {
         appendMessage("Sorry, didn't hear any rolls this time.");
       }
