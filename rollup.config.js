@@ -26,6 +26,7 @@ export default {
       },
     }),
 
+
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
     // some cases you'll need additional configuration -
@@ -49,14 +50,9 @@ export default {
     // instead of npm run dev), minify
     production && terser(),
 
-    // Environment variables
     replace({
-      process: JSON.stringify({
-        env: {
-          SPEECHLY_APP_ID: process.env.SPEECHLY_APP_ID,
-          SPEECHLY_APP_LANG: process.env.SPEECHLY_APP_LANG,
-        },
-      }),
+      SPEECHLY_APP_ID: process.env.SPEECHLY_APP_ID,
+      SPEECHLY_APP_LANG: process.env.SPEECHLY_APP_LANG,
     }),
   ],
   watch: {
