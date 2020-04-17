@@ -7,6 +7,8 @@ A Voice-Controlled App to roll role-playing dice. Because why not.
 
 Built with [Speechly](https://github.com/speechly/browser-client)
 
+Try it out now! [https://anttiviljami.github.io/dnd-voice-dice-roll/](https://anttiviljami.github.io/dnd-voice-dice-roll/)
+
 [Screenshot](#screenshot)
 
 ## Development
