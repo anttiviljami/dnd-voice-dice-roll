@@ -1,0 +1,93 @@
+dice1 = [
+    FOUR
+    SIX
+    EIGHT
+    TEN
+    TWELVE
+    TWENTY
+]
+
+dice2 = [
+    FOUR
+    SIX
+    EIGHT
+    TEN
+    TWELVE
+    TWENTY
+]
+
+dice3 = [
+    FOUR
+    SIX
+    EIGHT
+    TEN
+    TWELVE
+    TWENTY
+]
+
+quantity1 = [
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+]
+
+quantity2 = [
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+]
+
+plus = [
+    plus
+    and
+    with
+    add
+]
+
+*roll roll D $dice1(dice)
+*roll role D $dice1(dice)
+*roll throw D $dice1(dice)
+*roll do D $dice1(dice)
+*roll though D $dice1(dice)
+*roll thorough D $dice1(dice)
+*roll to D $dice1(dice)
+*roll add D $dice1(dice)
+*roll and D $dice1(dice)
+
+*roll roll $quantity1(quantity) D $dice1(dice)
+*roll role $quantity1(quantity) D $dice1(dice)
+*roll throw $quantity1(quantity) D $dice1(dice)
+*roll do $quantity1(quantity) D $dice1(dice)
+*roll though $quantity1(quantity) D $dice1(dice)
+*roll thorough $quantity1(quantity) D $dice1(dice)
+*roll to $quantity1(quantity) D $dice1(dice)
+*roll add $quantity1(quantity) D $dice1(dice)
+*roll and $quantity1(quantity) D $dice1(dice)
+
+*roll roll $quantity1(quantity) D $dice1(dice) $plus $quantity2(quantity) D $dice2(dice)
+*roll role $quantity1(quantity) D $dice1(dice) $plus $quantity2(quantity) D $dice2(dice)
+*roll throw $quantity1(quantity) D $dice1(dice) $plus $quantity2(quantity) D $dice2(dice)
+*roll do $quantity1(quantity) D $dice1(dice) $plus $quantity2(quantity) D $dice2(dice)
+*roll though $quantity1(quantity) D $dice1(dice) $plus $quantity2(quantity) D $dice2(dice)
+*roll thorough $quantity1(quantity) D $dice1(dice) $plus $quantity2(quantity) D $dice2(dice)
+*roll to $quantity1(quantity) D $dice1(dice) $plus $quantity2(quantity) D $dice2(dice)
+*roll add $quantity1(quantity) D $dice1(dice) $plus $quantity2(quantity) D $dice2(dice)
+*roll and $quantity1(quantity) D $dice1(dice) $plus $quantity2(quantity) D $dice2(dice)
