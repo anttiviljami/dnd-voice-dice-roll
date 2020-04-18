@@ -1,4 +1,5 @@
-# DnD Voice Dice Roller
+# DnD Voice Dice Roller 🎲
+
 ![CI](https://github.com/anttiviljami/dnd-voice-dice-roll/workflows/CI/badge.svg)
 [![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/anttiviljami/openapicmd/blob/master/LICENSE)
 

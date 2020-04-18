@@ -1,25 +1,25 @@
 <script>
-  import RPG from "rpg-dice-roller";
-  import { client } from "../lib/speechly";
+  import RPG from 'rpg-dice-roller';
+  import { client } from '../lib/speechly';
 
-  let textContent = "";
+  let textContent = '';
 
-  const appendMessage = message => {
+  const appendMessage = (message) => {
     textContent.innerHTML = textContent.innerHTML += `${message}\n`;
     textContent.scrollTop = textContent.scrollHeight;
   };
-  const clear = () => (textContent.innerHTML = "");
+  const clear = () => (textContent.innerHTML = '');
 
   export let recording = boolean;
 
   $: {
     if (recording) {
-      client.startContext(err => {
+      client.startContext((err) => {
         if (err !== undefined) {
           console.error(err);
-          appendMessage("Error: Failed to start recording!");
+          appendMessage('Error: Failed to start recording!');
         } else {
-          appendMessage("Listening...");
+          appendMessage('Listening...');
         }
       });
     } else {
@@ -28,13 +28,13 @@
   }
 
   // React to the phrases received from the API
-  client.onSegmentChange(segment => {
+  client.onSegmentChange((segment) => {
     console.log(segment);
     if (segment.isFinal) {
       appendMessage(
         `Heard: "${segment.words
           .map(({ value }) => value.toLowerCase())
-          .join(" ")}"`
+          .join(' ')}"`,
       );
 
       // roll dice
@@ -42,10 +42,10 @@
       let quantity = 1;
       for (const { type, value } of segment.entities) {
         switch (type) {
-          case "quantity":
+          case 'quantity':
             quantity = isNaN(value) ? 1 : value;
             break;
-          case "dice":
+          case 'dice':
             if (!isNaN(value)) {
               roller.roll(`${Number(quantity)}d${Number(value)}`);
               quantity = 1; // reset
@@ -57,9 +57,9 @@
         appendMessage(
           roller
             .toString()
-            .split(";")
-            .map(r => r.trim())
-            .join("\n")
+            .split(';')
+            .map((r) => r.trim())
+            .join('\n'),
         );
         appendMessage(`Total: ${roller.total}`);
       } else {
@@ -72,9 +72,10 @@
 <style>
   pre {
     resize: vertical;
-    height: 340px;
+    height: 35vh;
     max-height: 135vh;
     border-radius: 0.25em;
+    color: #333;
   }
 </style>
 
