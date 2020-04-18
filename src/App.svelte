@@ -61,19 +61,12 @@
   <p align="center" class="mt-3">
     &copy; 2020
     <a href="https://viljami.io" target="_blank">viljami.io</a>
-    <a href="https://github.com/anttiviljami" target="_blank">
+    <a
+      href="https://github.com/anttiviljami/dnd-voice-dice-roll"
+      target="_blank">
       <img
         src="https://img.icons8.com/material-sharp/96/000000/github.png"
         alt="GitHub"
-        class="icon" />
-    </a>
-    <a
-      href="https://twitter.com/anttiviljami"
-      title="twitter.com/anttiviljami"
-      target="_blank">
-      <img
-        src="https://img.icons8.com/android/96/000000/twitter.png"
-        alt="Twitter"
         class="icon" />
     </a>
   </p>
