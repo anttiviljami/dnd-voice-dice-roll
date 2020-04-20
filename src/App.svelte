@@ -61,7 +61,7 @@
       </button>
     {:else}
       <button
-        class="btn btn-primary"
+        class="btn btn-lg btn-primary"
         disabled={initializing}
         on:click={initialize}>
         {#if !initializing}Start{:else}Starting...{/if}

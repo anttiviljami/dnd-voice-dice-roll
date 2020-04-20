@@ -3,6 +3,11 @@
   import { client } from '../lib/speechly';
 
   let textContent = '';
+  let transcript = '';
+
+  const updateTranscript = (text) => {
+    transcript.innerHTML = text;
+  };
 
   const appendMessage = (message) => {
     textContent.innerHTML = textContent.innerHTML += `${message}\n`;
@@ -17,9 +22,9 @@
       client.startContext((err) => {
         if (err !== undefined) {
           console.error(err);
-          appendMessage('Error: Failed to start recording!');
+          updateTranscript('Error: Failed to start recording!');
         } else {
-          appendMessage('Listening...');
+          updateTranscript('Listening...');
         }
       });
     } else {
@@ -29,15 +34,17 @@
 
   // React to the phrases received from the API
   client.onSegmentChange((segment) => {
-    console.log(segment);
-    if (segment.isFinal) {
-      appendMessage(
-        `Heard: "${segment.words
-          .map(({ value }) => value.toLowerCase())
-          .join(' ')}"`,
-      );
+    const phrase = segment.words
+      .map(({ value, isFinal }) => {
+        const klass = isFinal ? 'final' : 'tentative';
+        return `<span class="transcript-${klass}">${value.toLowerCase()}</span>`;
+      })
+      .join(' ');
+    updateTranscript(phrase);
 
+    if (segment.isFinal) {
       // roll dice
+      const rolls = [];
       const roller = new RPG.DiceRoller();
       let quantity = 1;
       for (const { type, value } of segment.entities) {
@@ -47,13 +54,16 @@
             break;
           case 'dice':
             if (!isNaN(value)) {
-              roller.roll(`${Number(quantity)}d${Number(value)}`);
+              const roll = `${Number(quantity)}d${Number(value)}`;
+              rolls.push(roll);
+              roller.roll(roll);
               quantity = 1; // reset
             }
             break;
         }
       }
       if (roller.total) {
+        appendMessage(`Rolling: ${rolls.join(' + ')}`);
         appendMessage(
           roller
             .toString()
@@ -61,16 +71,16 @@
             .map((r) => r.trim())
             .join('\n'),
         );
-        appendMessage(`Total: ${roller.total}`);
+        appendMessage(`Total: ${roller.total}\n`);
       } else {
-        appendMessage("Sorry, didn't hear any rolls this time.");
+        appendMessage("Sorry, didn't hear any rolls this time.\n");
       }
     }
   });
 </script>
 
 <style>
-  pre {
+  pre.pre-main {
     resize: vertical;
     height: 35vh;
     max-height: 135vh;
@@ -80,8 +90,9 @@
 </style>
 
 <div>
+  <pre class="bg-white small border p-3" bind:this={transcript} />
   <pre
-    class="pre-scrollable bg-white small border p-3"
+    class="pre-scrollable pre-main bg-white small border p-3"
     bind:this={textContent} />
   <button class="btn btn-lg btn-primary btn-block" on:click={clear}>
     Clear
