@@ -5,14 +5,22 @@
 
   // Initialize the client - this will ask the user for microphone permissions and establish the connection to Speechly API.
   // Make sure you call `initlialize` from a user action handler (e.g. from a button press handler).
+  let initializing = false;
   let initialized = false;
-  client.initialize((err) => {
-    if (err !== undefined) {
-      console.error('Failed to initialize Speechly client:', err);
-      return;
-    }
-    initialized = true;
-  });
+
+  const initialize = () => {
+    initializing = true;
+
+    client.initialize((err) => {
+      initializing = false;
+      if (err !== undefined) {
+        console.error('Failed to initialize Speechly client:', err);
+        return;
+      }
+
+      initialized = true;
+    });
+  };
 
   let recording = false;
 
@@ -52,7 +60,12 @@
         {:else}Stop Recording{/if}
       </button>
     {:else}
-      <button class="btn btn-primary" disabled>Initializing...</button>
+      <button
+        class="btn btn-lg btn-primary"
+        disabled={initializing}
+        on:click={initialize}>
+        {#if !initializing}Start{:else}Starting...{/if}
+      </button>
     {/if}
   </div>
 
