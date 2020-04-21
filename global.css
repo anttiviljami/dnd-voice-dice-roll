@@ -6,3 +6,11 @@
   max-height: 1.75rem;
   vertical-align: middle;
 }
+
+span.transcript-final {
+  font-weight: 600;
+}
+
+span.transcript-tentative {
+  font-weight: 500;
+}
