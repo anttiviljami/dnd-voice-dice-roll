@@ -19,7 +19,7 @@
     "sirv-cli": "^0.4.4"
   },
   "dependencies": {
-    "@speechly/browser-client": "^0.3.2",
+    "@speechly/browser-client": "^0.4.0",
     "rpg-dice-roller": "^4.0.2"
   }
 }
